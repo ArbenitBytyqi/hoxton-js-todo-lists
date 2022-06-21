@@ -1,56 +1,43 @@
-function listUsers() {
-    let greeting = ''
+// @ts-nocheck
 
-    for (let user of users) {
-        let name = user.name
-        let id = user.id
-        let city = user.address.city
-        greeting += `Id: ${id} Name: ${name} City: ${city}\n\n`
+for (let user of users) {
+    let name = user.name
+    let id = user.id
+    let city = user.address.city
+    console.log(`${name} is from ${city} and their ID is ${id}
+    
+`)
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let userId = Number(prompt('Enter user ID:'))
+
+let theUser = null
+
+for (let user of users) {
+    if (user.id === userId) {
+        theUser = user
+        break
     }
-
-    alert(greeting)
 }
 
-function getUserId() {
-    let userId = Number(prompt('Enter your user id'))
-    return userId
-}
+let theTodos = []
 
-function findUser() {
-    let theUser = null
-    for (let user of users) {
-        if (user.id === userId) {
-            theUser = user
-            break
-        }
+for (let todo of todos) {
+    if (todo.userId === userId) {
+        theTodos.push(todo)
     }
-
-    return theUser
 }
 
-function findTodos() {
-    let theTodos = []
-    for (let todo of todos) {
-        if (todo.userId === userId) {
-            theTodos.push(todo)
-        }
-    }
+console.log(`The todos for the user with the ID ${userId} are: ${theTodos} `)
 
-    return theTodos
+let message = ''
+
+message = message + `Hello ${theUser.username}`
+
+for (let todo of theTodos) {
+    message = message + `${todo.title}`
 }
 
-function showUserTodos() {
-    let finalMessage = ''
-    finalMessage += `Hello ${user.username}:\n\n`
-    for (let todo of userTodos) {
-        finalMessage += `- ${todo.title}\n`
-    }
-
-    alert(finalMessage)
-}
-
-listUsers()
-let userId = getUserId()
-let user = findUser()
-let userTodos = findTodos()
-showUserTodos()
+alert('message')
